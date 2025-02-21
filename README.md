@@ -18,7 +18,7 @@ A ROS2 package for transmitting NumPy ndarrays between ROS2 nodes.
 
 ```bash
 cd ~/ros2_ws/src
-git clone git+https://github.com/Geson-anko/ndarray_msg.git
+git clone https://github.com/Geson-anko/ndarray_msg.git
 cd ../
 colcon build --packages-select ndarray_msg
 source install/setup.sh
