@@ -3,7 +3,7 @@
 <package format="3">
   <name>ndarray_msg</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>A ROS2 package for transmitting NumPy ndarrays between ROS2 nodes.</description>
   <maintainer email="59220704+Geson-anko@users.noreply.github.com">root</maintainer>
   <license>MIT</license>
 

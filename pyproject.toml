@@ -1,7 +1,7 @@
 [project]
 name = "ndarray-msg-utils"
 version = "0.1.0"
-description = "Add your description here"
+description = "A ROS2 package for transmitting NumPy ndarrays between ROS2 nodes."
 readme = "README.md"
 authors = [
     { name = "Geson-anko", email = "59220704+Geson-anko@users.noreply.github.com" }
