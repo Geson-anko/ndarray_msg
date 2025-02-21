@@ -7,7 +7,6 @@ on:
     branches: [main, stable]
 
 env:
-  PYTHON_VERSION: "3.10"
   UV_VERSION: "0.5.10"
 
 jobs:
@@ -20,7 +19,7 @@ jobs:
         uses: astral-sh/setup-uv@v4
         with:
           version: ${{ env.UV_VERSION }}
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: "3.10"
           enable-cache: true
 
       - name: Cache pre-commit
