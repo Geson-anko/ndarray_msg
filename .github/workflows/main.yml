@@ -77,7 +77,8 @@ jobs:
       - name: Install ROS2 project
         run: |
           . /opt/ros/${{ matrix.rosdistro }}/setup.sh &&
-          colcon build
+          colcon build &&
+          ls -R .
 
       - name: Run pytest with coverage
         run: |
