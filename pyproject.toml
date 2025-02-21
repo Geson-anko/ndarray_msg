@@ -7,7 +7,10 @@ authors = [
     { name = "Geson-anko", email = "59220704+Geson-anko@users.noreply.github.com" }
 ]
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "numpy>=2.0.0",
+    "tomli>=2.2.1",
+]
 
 [tool.uv]
 python-preference = "only-system"
