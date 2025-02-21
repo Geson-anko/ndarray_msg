@@ -21,6 +21,7 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "lark>=1.2.2",
     "pre-commit>=4.1.0",
     "pytest>=8.3.4",
 ]
