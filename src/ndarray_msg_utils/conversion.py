@@ -3,27 +3,43 @@ from typing import Any
 import numpy as np
 import numpy.typing as npt
 from ndarray_msg.msg import NDArray
+from rclpy.clock import ROSClock
+from rclpy.time import Time
+from std_msgs.msg import Header
+
+_ROS_CLOCK = ROSClock()
 
 
-def to_ros_msg(array: npt.NDArray[Any]) -> NDArray:
+def to_ros_msg(
+    array: npt.NDArray[Any], timestamp: Time | None = None, frame_id: str = ""
+) -> NDArray:
     """Convert a NumPy array to a ROS2 NDArray message.
 
     Serializes a NumPy array into a ROS2 NDArray message by storing its data type,
     shape, size and binary data. The array is flattened and converted to bytes
-    for transmission.
+    for transmission. Includes ROS header with timestamp and frame_id.
 
     Args:
         array: Input NumPy array of any dimension and data type.
+        timestamp: ROS Time object for header timestamp. If None, current time is used.
+        frame_id: Frame ID string for header. Empty string by default.
 
     Returns:
-        A ROS2 NDArray message containing the serialized array data.
+        A ROS2 NDArray message containing the serialized array data and header.
 
     Example:
         >>> import numpy as np
+        >>> from rclpy.clock import ROSClock
         >>> arr = np.array([[1, 2], [3, 4]])
-        >>> msg = to_ros2_msg(arr)
+        >>> msg = to_ros2_msg(arr, timestamp=ROSClock().now(), frame_id="some_ndarray")
     """
+    if timestamp is None:
+        timestamp = _ROS_CLOCK.now()
     msg = NDArray()
+    header = Header()
+    header.stamp = timestamp.to_msg()
+    header.frame_id = frame_id
+    msg.header = header
     msg.dtype = array.dtype.name
     msg.shape = array.shape
     msg.data_size = array.size

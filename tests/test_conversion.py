@@ -1,5 +1,6 @@
 import numpy as np
 import pytest
+from rclpy.time import Time
 
 from ndarray_msg_utils.conversion import from_ros_msg, to_ros_msg
 
@@ -7,12 +8,17 @@ from ndarray_msg_utils.conversion import from_ros_msg, to_ros_msg
 def test_conversion_int32():
     """Test conversion with int32 arrays."""
     original = np.array([[1, 2], [3, 4]], dtype=np.int32)
-    msg = to_ros_msg(original)
+    timestamp = Time(seconds=1, nanoseconds=500)
+    frame_id = "base_link"
+    msg = to_ros_msg(original, timestamp=timestamp, frame_id=frame_id)
     restored = from_ros_msg(msg)
 
     assert msg.dtype == "int32"
     assert list(msg.shape) == [2, 2]
     assert msg.data_size == 4
+    assert msg.header.frame_id == frame_id
+    assert msg.header.stamp.sec == 1
+    assert msg.header.stamp.nanosec == 500
     np.testing.assert_array_equal(original, restored)
 
 
@@ -97,3 +103,13 @@ def test_non_contiguous_array():
     restored = from_ros_msg(msg)
 
     np.testing.assert_array_equal(non_contiguous, restored)
+
+
+def test_default_header():
+    """Test default header values."""
+    array = np.array([1, 2, 3])
+    msg = to_ros_msg(array)
+
+    assert msg.header.frame_id == ""
+    assert msg.header.stamp.sec >= 0  # Current time should be valid
+    assert msg.header.stamp.nanosec >= 0
