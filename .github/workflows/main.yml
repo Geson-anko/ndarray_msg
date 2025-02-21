@@ -12,8 +12,7 @@ env:
 
 jobs:
   run_pre-commit:
-    runs-on: ubuntu-latest
-    container: ros:humble
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
@@ -65,4 +64,4 @@ jobs:
 
       - name: Run pytest with coverage
         run: |
-          uv run pytest -vv --log-level INFO --cov -m "not practical"
+          uv run pytest -vv --log-level INFO
