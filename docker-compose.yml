@@ -14,7 +14,7 @@ services:
 
 volumes:
   ros2_ws:
-    name: ros2_ws
+    name: ndarray-msg
   uv_cache:
   pip_cache:
   pre-commit_cache:
