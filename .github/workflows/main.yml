@@ -1,0 +1,66 @@
+name: Lint & Format / Test
+
+on:
+  push:
+    branches: [main, stable]
+  pull_request:
+    branches: [main, stable]
+
+env:
+  UV_VERSION: "0.5.10"
+
+jobs:
+  run_pre-commit:
+    runs-on: ubuntu-latest
+    container: ros:humble
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
+      - name: Cache pre-commit
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Run pre-commit
+        uses: pre-commit/action@v3.0.1
+
+  run_tests:
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["ros:humble", "ros:jazzy"]
+
+    timeout-minutes: 20
+
+    container:
+      image: ${{ matrix.image }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock', 'pyproject.toml') }}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run pytest with coverage
+        run: |
+          uv run pytest -vv --log-level INFO --cov -m "not practical"
