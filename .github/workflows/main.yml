@@ -46,14 +46,12 @@ jobs:
 
     steps:
       - name: Setup directories
-        run: |
-          mkdir -p /ros2_ws/src/ndarray_msg &&
-          cd /ros2_ws/src/ndarray_msg
+        run: mkdir -p ./ros2_ws/src/
 
 
       - uses: actions/checkout@v4
         with:
-          path: /ros2_ws/src/ndarray_msg
+          path: ./ros2_ws/src/ndarray_msg
 
       - name: Install dependencies
         run: |
@@ -75,13 +73,13 @@ jobs:
 
       - name: Install Python dependencies
         run: uv sync
+        working-directory: ./ros2_ws/src/ndarray_msg
 
       - name: Install ROS2 project
         run: |
           . /opt/ros/${{ matrix.rosdistro }}/setup.sh &&
-          ./build.sh &&
-          source /ros2_ws/install/setup.sh
+          colcon build
 
       - name: Run pytest with coverage
-        run: |
-          uv run pytest -v --log-level INFO
+        run: uv run pytest -v --log-level INFO
+        working-directory: ./ros2_ws/src/ndarray_msg
