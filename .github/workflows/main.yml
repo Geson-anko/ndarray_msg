@@ -82,7 +82,9 @@ jobs:
 
       - name: Run pytest
         run: |
-          ls -R ../../ &&
-          . ./../../install/setup.sh &&
+          ls ./../../../ &&
+          ls ./../../ &&
+          ls ./../ &&
+          . ./../install/setup.sh &&
           uv run pytest -v --log-level INFO
         working-directory: ./ros2_ws/src/ndarray_msg
