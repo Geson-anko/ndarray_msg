@@ -78,13 +78,10 @@ jobs:
         run: |
           . /opt/ros/${{ matrix.rosdistro }}/setup.sh &&
           colcon build &&
-          ls ./install
+        working-directory: ./ros2_ws/
 
       - name: Run pytest
         run: |
-          ls ./../../../ &&
-          ls ./../../ &&
-          ls ./../ &&
-          . ./../install/setup.sh &&
+          . ../../install/setup.sh &&
           uv run pytest -v --log-level INFO
         working-directory: ./ros2_ws/src/ndarray_msg
