@@ -13,21 +13,6 @@ venv: ## Makes the venv with system site packages
 	uv venv --system-site-packages
 	uv sync
 
-docker-build: ## Build docker images
-	docker compose build --no-cache
-
-docker-up: ## Start docker containers
-	docker compose up -d
-
-docker-down: ## Stop docker containers
-	docker compose down
-
-docker-down-volume:  ## Stop docker containers with removing volumes.
-	docker compose down -v
-
-docker-attach: ## Attach to development container
-	docker compose exec dev bash
-
 format: ## Run pre-commit hooks
 	uv run pre-commit run -a
 
