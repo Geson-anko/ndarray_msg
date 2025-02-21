@@ -7,14 +7,4 @@
 			"path": ".."
 		}
 	],
-	"settings": {},
-	"extensions": {
-		"recommendations": [
-			"ms-python.python",
-			"tamasfe.even-better-toml",
-			"ms-azuretools.vscode-docker",
-			"ms-vscode.cmake-tools",
-			"nonanonno.vscode-ros2",
-		]
-	}
 }
