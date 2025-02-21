@@ -23,7 +23,8 @@ fi' >> ~/.bashrc
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 ENV UV_LINK_MODE=copy
 RUN echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc \
-&& make venv
+&& make venv \
+&& uv run pre-commit install
 
 # Console setup
 CMD [ "bash" ]
