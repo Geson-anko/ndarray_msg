@@ -46,7 +46,10 @@ jobs:
 
     steps:
       - name: Setup directories
-        run: mkdir -p ros2_ws/src
+        run: |
+          mkdir -p ros2_ws/src/ndarray_msg &&
+          cd ros2_ws/src/ndarray_msg
+
 
       - uses: actions/checkout@v4
         with:
@@ -70,7 +73,7 @@ jobs:
           path: .venv
           key: uv-${{ matrix.rosdistro }}-${{ hashFiles('uv.lock', 'pyproject.toml') }}
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: uv sync
 
       - name: Install ROS2 project
