@@ -1,5 +1,5 @@
 {
     "python.analysis.extraPaths": [
-        "/ros2_ws/install/ndarray_msg/lib/python3.10/site-packages"
+        "/ros2_ws/build/ndarray_msg/rosidl_generator_py"
     ]
 }
