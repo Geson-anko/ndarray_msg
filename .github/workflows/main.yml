@@ -77,7 +77,7 @@ jobs:
       - name: Install ROS2 project
         run: |
           . /opt/ros/${{ matrix.rosdistro }}/setup.sh &&
-          colcon build &&
+          colcon build
         working-directory: ./ros2_ws/
 
       - name: Run pytest
