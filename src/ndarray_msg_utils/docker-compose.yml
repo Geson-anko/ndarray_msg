@@ -1,0 +1,20 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ros2_ws:/ros2_ws
+      - uv_cache:/root/.cache/uv
+      - pip_cache:/root/.cache/pip
+      - pre-commit_cache:/root/.cache/pre-commit
+    tty: true
+    stdin_open: true
+    command: /usr/bin/bash
+
+volumes:
+  ros2_ws:
+    name: ros2_ws
+  uv_cache:
+  pip_cache:
+  pre-commit_cache:
