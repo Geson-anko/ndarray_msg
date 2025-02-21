@@ -27,7 +27,7 @@ def to_ros_msg(array: npt.NDArray[Any]) -> NDArray:
     msg.dtype = array.dtype.name
     msg.shape = array.shape
     msg.data_size = array.size
-    msg.data = [bytes([b]) for b in array.tobytes()]
+    msg.data = array.tobytes()
     return msg
 
 
@@ -49,5 +49,5 @@ def from_ros_msg(msg: NDArray) -> npt.NDArray[Any]:
         >>> print(arr.shape)
         (2, 2)
     """
-    array = np.frombuffer(b"".join(msg.data), dtype=np.dtype(msg.dtype))
+    array = np.frombuffer(msg.data, dtype=np.dtype(msg.dtype))
     return array.reshape(msg.shape)
