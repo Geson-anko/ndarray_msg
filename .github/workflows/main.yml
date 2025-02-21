@@ -7,6 +7,7 @@ on:
     branches: [main, stable]
 
 env:
+  PYTHON_VERSION: "3.10"
   UV_VERSION: "0.5.10"
 
 jobs:
@@ -20,6 +21,7 @@ jobs:
         uses: astral-sh/setup-uv@v4
         with:
           version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
           enable-cache: true
 
       - name: Cache pre-commit
@@ -32,7 +34,7 @@ jobs:
         uses: pre-commit/action@v3.0.1
 
   run_tests:
-    runs-on: ${{ matrix.image }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -56,7 +58,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock', 'pyproject.toml') }}
+          key: uv-${{ matrix.image }}-${{ hashFiles('uv.lock', 'pyproject.toml') }}
 
       - name: Install dependencies
         run: uv sync
