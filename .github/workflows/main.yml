@@ -62,6 +62,12 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Install ROS2 project
+        run: |
+          ls -R .
+          ./build.sh
+          source /ros2_ws/install/setup.sh
+
       - name: Run pytest with coverage
         run: |
-          uv run pytest -vv --log-level INFO
+          uv run pytest -v --log-level INFO
