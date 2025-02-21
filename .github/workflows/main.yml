@@ -82,6 +82,6 @@ jobs:
 
       - name: Run pytest with coverage
         run: |
-          source ../../install/setup.sh &&
+          . ../../install/setup.sh &&
           uv run pytest -v --log-level INFO
         working-directory: ./ros2_ws/src/ndarray_msg
