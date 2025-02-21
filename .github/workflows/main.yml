@@ -82,6 +82,6 @@ jobs:
 
       - name: Run pytest with coverage
         run: |
-          . ../../install/setup.sh &&
+          . /opt/ros/${{ matrix.rosdistro }}/setup.sh &&
           uv run pytest -v --log-level INFO
         working-directory: ./ros2_ws/src/ndarray_msg
