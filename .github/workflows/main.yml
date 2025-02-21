@@ -56,7 +56,8 @@ jobs:
         run: |
           rosdep update &&
           apt-get update &&
-          rosdep install --from-path . -i -y --rosdistro ${{ matrix.rosdistro }}
+          rosdep install --from-path . -i -y --rosdistro ${{ matrix.rosdistro }} &&
+          apt-get install -y make
 
       - name: Install uv
         uses: astral-sh/setup-uv@v4
@@ -71,7 +72,7 @@ jobs:
           key: uv-${{ matrix.rosdistro }}-${{ hashFiles('./ros2_ws/src/ndarray_msg/uv.lock', './ros2_ws/src/ndarray_msg/pyproject.toml') }}
 
       - name: Install Python dependencies
-        run: uv sync
+        run: make venv && uv sync
         working-directory: ./ros2_ws/src/ndarray_msg
 
       - name: Install ROS2 project
