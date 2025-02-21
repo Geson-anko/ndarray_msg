@@ -37,15 +37,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: ["ros:humble", "ros:jazzy"]
+        rosdistro: ["humble", "jazzy"]
 
     timeout-minutes: 20
 
     container:
-      image: ${{ matrix.image }}
+      image: ros:${{ matrix.rosdistro }}
 
     steps:
+      - name: Setup directories
+        run: mkdir -p ros2_ws/src
+
       - uses: actions/checkout@v4
+        with:
+          path: ros2_ws/src/ndarray_msg
+
+      - name: Install dependencies
+        run: |
+          rosdep update &&
+          apt-get update &&
+          rosdep install --from-path . -i -y --rosdistro ${{ matrix.rosdistro }}
 
       - name: Install uv and set the python version
         uses: astral-sh/setup-uv@v4
@@ -57,15 +68,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: uv-${{ matrix.image }}-${{ hashFiles('uv.lock', 'pyproject.toml') }}
+          key: uv-${{ matrix.rosdistro }}-${{ hashFiles('uv.lock', 'pyproject.toml') }}
 
       - name: Install dependencies
         run: uv sync
 
       - name: Install ROS2 project
         run: |
-          ls -R .
-          ./build.sh
+          . /opt/ros/${{ matrix.rosdistro }}/setup.sh &&
+          ./build.sh &&
           source /ros2_ws/install/setup.sh
 
       - name: Run pytest with coverage
