@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "/ros2_ws/install/ndarray_msg/lib/python3.10/site-packages"
+    ]
+}
