@@ -9,7 +9,6 @@ authors = [
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=2.0.0",
-    "tomli>=2.2.1",
 ]
 
 [tool.uv]
@@ -24,6 +23,7 @@ dev = [
     "lark>=1.2.2",
     "pre-commit>=4.1.0",
     "pytest>=8.3.4",
+    "tomli>=2.2.1",
 ]
 
 [tool.hatch.build.targets.wheel]
