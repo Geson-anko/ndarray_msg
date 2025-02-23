@@ -3,11 +3,10 @@ from typing import Any
 import numpy as np
 import numpy.typing as npt
 from ndarray_msg.msg import NDArray
-from rclpy.clock import ROSClock
 from rclpy.time import Time
 from std_msgs.msg import Header
 
-_ROS_CLOCK = ROSClock()
+from .utils import get_now_time
 
 
 def to_ros_msg(
@@ -34,7 +33,7 @@ def to_ros_msg(
         >>> msg = to_ros2_msg(arr, timestamp=ROSClock().now(), frame_id="some_ndarray")
     """
     if timestamp is None:
-        timestamp = _ROS_CLOCK.now()
+        timestamp = get_now_time()
     msg = NDArray()
     header = Header()
     header.stamp = timestamp.to_msg()
