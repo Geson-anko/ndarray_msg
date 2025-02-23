@@ -1,5 +1,5 @@
 [project]
-name = "ndarray-msg-utils"
+name = "ros2-ndarray-msg-utils"
 version = "0.1.0"
 description = "A ROS2 package for transmitting NumPy ndarrays between ROS2 nodes."
 readme = "README.md"
