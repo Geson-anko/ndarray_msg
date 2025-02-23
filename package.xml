@@ -7,6 +7,9 @@
   <maintainer email="59220704+Geson-anko@users.noreply.github.com">Geson-anko</maintainer>
   <license>MIT</license>
 
+  <url type="repository">https://github.com/Geson-anko/ndarray_msg</url>
+  <url type="bugtracker">https://github.com/Geson-anko/ndarray_msg/issues</url>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>std_msgs</depend>
 
