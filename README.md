@@ -55,6 +55,20 @@ msg = to_ros_msg(array, timestamp=ROSClock().now(), frame_id="array_frame")
 restored = from_ros_msg(msg)
 ```
 
+### PyTorch Support
+
+```py
+import torch
+from ndarray_msg_utils.torch import to_ros_msg, from_ros_msg
+
+# Convert PyTorch tensor to ROS2 message
+tensor = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32)
+msg = to_ros_msg(tensor)
+
+# Convert back to PyTorch tensor
+restored = from_ros_msg(msg)
+```
+
 ## License
 
 MIT License
