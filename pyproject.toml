@@ -11,6 +11,11 @@ dependencies = [
     "numpy>=1.21.5",
 ]
 
+[project.optional-dependencies]
+torch = [
+    "torch>=2.0.0",
+]
+
 [tool.uv]
 python-preference = "only-system"
 
