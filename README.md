@@ -34,8 +34,7 @@ source install/setup.sh
 ### Install Python Utility Package
 
 ```bash
-cd ~/ros2_ws/src/ndarray_msg
-pip install .
+pip install ros2-ndarray-msg-utils
 ```
 
 ## Usage
@@ -63,6 +62,10 @@ restored = from_ros_msg(msg)
 ```
 
 ### PyTorch Support
+
+```bash
+pip install "ros2-ndarray-msg-utils[torch]"
+```
 
 ```py
 import torch
