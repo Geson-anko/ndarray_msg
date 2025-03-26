@@ -4,16 +4,14 @@ on: push
 
 env:
   UV_VERSION: "0.5.10"
-  ROS_DISTRO: "humble"
 
 jobs:
   build:
     name: Build distribution 📦
     if: startsWith(github.ref, 'refs/tags/')  # only publish to PyPI on tag pushes
     runs-on: ubuntu-latest
-
     container:
-        image: ros:${{ env.ROS_DISTRO }}
+        image: ros:humble
 
     steps:
     - uses: actions/checkout@v4

@@ -6,7 +6,6 @@ on:
 
 env:
   UV_VERSION: "0.5.10"
-  ROS_DISTRO: "humble"
 
 jobs:
   build:
@@ -14,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ros:${{ env.ROS_DISTRO }}
+      image: ros:humble
 
     steps:
       - uses: actions/checkout@v4
