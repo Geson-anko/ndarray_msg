@@ -3,14 +3,17 @@ name: Publish Python 🐍 distribution 📦 to PyPI
 on: push
 
 env:
-  PYTHON_VERSION: "3.12"
   UV_VERSION: "0.5.10"
+  ROS_DISTRO: "humble"
 
 jobs:
   build:
     name: Build distribution 📦
     if: startsWith(github.ref, 'refs/tags/')  # only publish to PyPI on tag pushes
     runs-on: ubuntu-latest
+
+    container:
+        image: ros:${{ env.ROS_DISTRO }}
 
     steps:
     - uses: actions/checkout@v4
@@ -21,7 +24,6 @@ jobs:
       uses: astral-sh/setup-uv@v4
       with:
         version: ${{ env.UV_VERSION }}
-        python-version: ${{ env.PYTHON_VERSION }}
         enable-cache: true
 
     - name: Build 🛠️ a binary wheel and a source tarball

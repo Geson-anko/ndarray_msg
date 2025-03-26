@@ -5,34 +5,36 @@ on:
     branches: [stable]
 
 env:
-  PYTHON_VERSION: "3.10"
   UV_VERSION: "0.5.10"
+  ROS_DISTRO: "humble"
 
 jobs:
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
 
+    container:
+      image: ros:${{ env.ROS_DISTRO }}
+
     steps:
-    - uses: actions/checkout@v4
-      with:
-        persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-    - name: Set up Python 🐍
-      uses: astral-sh/setup-uv@v4
-      with:
-        version: ${{ env.UV_VERSION }}
-        python-version: ${{ env.PYTHON_VERSION }}
-        enable-cache: true
+      - name: Set up Python 🐍
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
 
-    - name: Build 🛠️ a binary wheel and a source tarball
-      run: uv build
+      - name: Build 🛠️ a binary wheel and a source tarball
+        run: uv build
 
-    - name: Store the distribution packages
-      uses: actions/upload-artifact@v4
-      with:
-        name: python-package-distributions
-        path: dist/
+      - name: Store the distribution packages
+        uses: actions/upload-artifact@v4
+        with:
+            name: python-package-distributions
+            path: dist/
 
   publish-to-testpypi:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
