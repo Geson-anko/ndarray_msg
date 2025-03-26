@@ -109,7 +109,7 @@ filterwarnings = [
   "ignore::DeprecationWarning",
   "ignore::UserWarning",
 ]
-log_cli = "True"
+log_cli = true
 
 minversion = "6.0"
 testpaths = "tests/"
