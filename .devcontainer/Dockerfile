@@ -1,7 +1,7 @@
 FROM ros:humble
 
-RUN mkdir -p /ros2_ws/src/ndarray_msg
-WORKDIR /ros2_ws/src/ndarray_msg
+RUN mkdir -p /ros2_ws/src/numpy_ndarray_msgs
+WORKDIR /ros2_ws/src/numpy_ndarray_msgs
 COPY ./ ./
 
 # Setup dependencies

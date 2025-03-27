@@ -1,6 +1,6 @@
 from importlib import metadata
 
-from ndarray_msg.msg import NDArray
+from numpy_ndarray_msgs.msg import NDArray
 
 from .conversion import from_ros_msg, to_ros_msg
 

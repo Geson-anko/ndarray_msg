@@ -50,7 +50,7 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          path: ./ros2_ws/src/ndarray_msg
+          path: ./ros2_ws/src/numpy_ndarray_msgs
 
       - name: Install dependencies
         run: |
@@ -69,11 +69,11 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: uv-${{ matrix.rosdistro }}-${{ hashFiles('./ros2_ws/src/ndarray_msg/uv.lock', './ros2_ws/src/ndarray_msg/pyproject.toml') }}
+          key: uv-${{ matrix.rosdistro }}-${{ hashFiles('./ros2_ws/src/numpy_ndarray_msgs/uv.lock', './ros2_ws/src/numpy_ndarray_msgs/pyproject.toml') }}
 
       - name: Install Python dependencies
         run: make venv
-        working-directory: ./ros2_ws/src/ndarray_msg
+        working-directory: ./ros2_ws/src/numpy_ndarray_msgs
 
       - name: Install ROS2 project
         run: |
@@ -85,4 +85,4 @@ jobs:
         run: |
           . ../../install/setup.sh &&
           uv run pytest -v --log-level INFO
-        working-directory: ./ros2_ws/src/ndarray_msg
+        working-directory: ./ros2_ws/src/numpy_ndarray_msgs

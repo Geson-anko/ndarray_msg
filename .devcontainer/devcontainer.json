@@ -4,8 +4,8 @@
       "context": "../",
       "dockerfile": "./Dockerfile"
     },
-    "workspaceMount": "source=ros2-ndarray-msg,target=/ros2_ws/src/ndarray_msg,type=volume",
-    "workspaceFolder": "/ros2_ws/src/ndarray_msg",
+    "workspaceMount": "source=ros2-ndarray-msg,target=/ros2_ws/src/numpy_ndarray_msgs,type=volume",
+    "workspaceFolder": "/ros2_ws/src/numpy_ndarray_msgs",
     "mounts": [
       "source=uv-cache,target=/root/.cache/uv,type=volume",
       "source=pip-cache,target=/root/.cache/pip,type=volume",

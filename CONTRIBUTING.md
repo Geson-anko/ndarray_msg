@@ -17,8 +17,8 @@ Docker and VS Code with the "Dev Containers" extension are required.
 2. Clone and open the repository:
 
 ```bash
-git clone https://github.com/Geson-anko/ndarray_msg.git
-cd ndarray_msg
+git clone https://github.com/Geson-anko/numpy_ndarray_msgs.git
+cd numpy_ndarray_msgs
 code .
 ```
 
