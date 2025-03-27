@@ -1,7 +1,7 @@
 import ctypes
 
 import torch
-from ndarray_msg.msg import NDArray
+from numpy_ndarray_msgs.msg import NDArray
 from rclpy.time import Time
 from std_msgs.msg import Header
 

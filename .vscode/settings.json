@@ -1,6 +1,6 @@
 {
-    "python.defaultInterpreterPath": "/ros2_ws/src/ndarray_msg/.venv/bin/python",
+    "python.defaultInterpreterPath": "/ros2_ws/src/numpy_ndarray_msgs/.venv/bin/python",
     "python.analysis.extraPaths": [
-        "/ros2_ws/build/ndarray_msg/rosidl_generator_py"
+        "/ros2_ws/build/numpy_ndarray_msgs/rosidl_generator_py"
     ]
 }

@@ -3,7 +3,7 @@ from collections.abc import Generator
 import numpy as np
 import pytest
 import rclpy
-from ndarray_msg.msg import NDArray
+from numpy_ndarray_msgs.msg import NDArray
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.node import Node
 from rclpy.publisher import Publisher

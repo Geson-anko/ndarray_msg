@@ -2,7 +2,7 @@ from typing import Any
 
 import numpy as np
 import numpy.typing as npt
-from ndarray_msg.msg import NDArray
+from numpy_ndarray_msgs.msg import NDArray
 from rclpy.time import Time
 from std_msgs.msg import Header
 

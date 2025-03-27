@@ -3,7 +3,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Document Style](https://img.shields.io/badge/%20docstyle-google-3666d6.svg)](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings)
-[![Lint & Format / Test](https://github.com/Geson-anko/ndarray_msg/actions/workflows/main.yml/badge.svg)](https://github.com/Geson-anko/ndarray_msg/actions/workflows/main.yml)
+[![Lint & Format / Test](https://github.com/Geson-anko/numpy_ndarray_msgs/actions/workflows/main.yml/badge.svg)](https://github.com/Geson-anko/numpy_ndarray_msgs/actions/workflows/main.yml)
 
 # ROS2 NDArray Message
 
@@ -25,9 +25,9 @@ A ROS2 package for transmitting NumPy ndarrays between ROS2 nodes.
 
 ```bash
 cd ~/ros2_ws/src
-git clone https://github.com/Geson-anko/ndarray_msg.git
+git clone https://github.com/Geson-anko/numpy_ndarray_msgs.git
 cd ../
-colcon build --packages-select ndarray_msg
+colcon build --packages-select numpy_ndarray_msgs
 source install/setup.sh
 ```
 
